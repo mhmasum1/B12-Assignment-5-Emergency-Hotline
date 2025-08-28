@@ -18,11 +18,14 @@ for (const findIcon of heartIcons) {
 
 let availableCoins = 100;
 const coins = document.getElementById("available-coins");
-const calls = document.querySelectorAll("#call-button")
+const calls = document.querySelectorAll(".call-button")
 for (const call of calls) {
     call.addEventListener('click', function (e) {
-        e.stopPropagation();
-        alert("Calling")
+
+        const targetCart = call.closest(".cart");
+        const serviceName = targetCart.querySelector(".service-name").innerText;
+        const serviceNumber = targetCart.querySelector(".service-number").innerText;
+        alert(` Calling ${serviceName} ${serviceNumber}... `)
 
     });
 }
