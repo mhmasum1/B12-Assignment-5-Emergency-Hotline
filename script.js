@@ -68,3 +68,10 @@ for (const clickCopy of clickCopys) {
 
     });
 }
+
+// Clear Data 
+const clearBtn = document.getElementById("clear-btn");
+
+clearBtn.addEventListener("click", function () {
+    callHistory.innerHTML = "";
+});
