@@ -55,7 +55,6 @@ for (const call of calls) {
 }
 
 // Copy Count 
-
 let copyCount = 0;
 const copyCounts = document.getElementById("copy-count");
 const clickCopys = document.querySelectorAll(".click-copy");
@@ -63,11 +62,21 @@ const clickCopys = document.querySelectorAll(".click-copy");
 for (const clickCopy of clickCopys) {
     clickCopy.addEventListener("click", function (e) {
         e.stopPropagation();
+
+        const targetCart = clickCopy.closest(".cart");
+        const serviceEl = targetCart.querySelector(".service-number");
+
+        let serviceNumber = serviceEl.innerText; // text
+        alert(`Copied Number : ${serviceNumber}`);
+
         copyCount = copyCount + 1;
         copyCounts.innerText = copyCount;
 
+        // for copy to clipboard
+        navigator.clipboard.writeText(serviceNumber);
     });
 }
+
 
 // Clear Data 
 const clearBtn = document.getElementById("clear-btn");
