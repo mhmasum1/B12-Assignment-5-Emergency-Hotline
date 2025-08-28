@@ -17,15 +17,27 @@ for (const findIcon of heartIcons) {
 // Call Buttons
 
 let availableCoins = 100;
-const coins = document.getElementById("available-coins");
+
+const displayCoins = document.getElementById("available-coins");
 const calls = document.querySelectorAll(".call-button")
+
 for (const call of calls) {
     call.addEventListener('click', function (e) {
 
+        if (availableCoins < 20) {
+            alert("Not enough coins to make a call ");
+            return;
+        }
+
         const targetCart = call.closest(".cart");
+
         const serviceName = targetCart.querySelector(".service-name").innerText;
+
         const serviceNumber = targetCart.querySelector(".service-number").innerText;
+
         alert(` Calling ${serviceName} ${serviceNumber}... `)
+        availableCoins = availableCoins - 20;
+        displayCoins.innerText = availableCoins;
 
     });
 }
