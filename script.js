@@ -21,6 +21,8 @@ let availableCoins = 100;
 const displayCoins = document.getElementById("available-coins");
 const calls = document.querySelectorAll(".call-button")
 
+const callHistory = document.getElementById("call-history")
+
 for (const call of calls) {
     call.addEventListener('click', function (e) {
 
@@ -39,6 +41,16 @@ for (const call of calls) {
         availableCoins = availableCoins - 20;
         displayCoins.innerText = availableCoins;
 
+        const div = document.createElement('div');
+        const time = new Date().toLocaleTimeString();
+        div.className = "flex justify-between items-center bg-gray-100 p-2 rounded-lg mt-3"
+
+        div.innerHTML = `<div><p class="font-bold" >${serviceName} </p>
+                            <p class="text-gray-500">${serviceNumber} </p></div>
+                                     <div>${time}</div>`
+
+        callHistory.appendChild(div)
+
     });
 }
 
@@ -53,7 +65,6 @@ for (const clickCopy of clickCopys) {
         e.stopPropagation();
         copyCount = copyCount + 1;
         copyCounts.innerText = copyCount;
-
 
     });
 }
