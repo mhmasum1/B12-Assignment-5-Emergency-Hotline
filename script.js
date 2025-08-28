@@ -41,3 +41,19 @@ for (const call of calls) {
 
     });
 }
+
+// Copy Count 
+
+let copyCount = 0;
+const copyCounts = document.getElementById("copy-count");
+const clickCopys = document.querySelectorAll(".click-copy");
+
+for (const clickCopy of clickCopys) {
+    clickCopy.addEventListener("click", function (e) {
+        e.stopPropagation();
+        copyCount = copyCount + 1;
+        copyCounts.innerText = copyCount;
+
+
+    });
+}
